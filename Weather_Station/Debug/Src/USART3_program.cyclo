@@ -1,0 +1,7 @@
+../Src/USART3_program.c:26:6:USART3_voidInit	1
+../Src/USART3_program.c:82:6:USART3_enableTX	1
+../Src/USART3_program.c:93:6:USART3_enableRX	1
+../Src/USART3_program.c:105:6:USART3_voidSendByte	3
+../Src/USART3_program.c:126:6:USART3_voidSendString	2
+../Src/USART3_program.c:148:4:USART3_u8ReciveData	3
+../Src/USART3_program.c:178:6:USART3_voidReceiveString	2

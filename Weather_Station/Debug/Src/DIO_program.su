@@ -1,0 +1,4 @@
+../Src/DIO_program.c:19:6:DIO_voidSetPinDirection	16	static
+../Src/DIO_program.c:79:6:DIO_voidSetPinValue	16	static
+../Src/DIO_program.c:106:5:DIO_u8GetPinValue	24	static
+../Src/DIO_program.c:125:6:DIO_voidTogllePinValue	16	static

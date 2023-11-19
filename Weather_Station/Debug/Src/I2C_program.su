@@ -1,0 +1,6 @@
+../Src/I2C_program.c:10:6:I2C_voidInit	4	static
+../Src/I2C_program.c:33:6:I2c_voidSendStartCondition	4	static
+../Src/I2C_program.c:43:6:I2C_voidSendSlaveAddress	24	static
+../Src/I2C_program.c:50:6:I2C_voidMasterWriteDataByte	16	static
+../Src/I2C_program.c:55:6:I2C_voidSendStopCondition	4	static
+../Src/I2C_program.c:62:4:I2C_u8MasterReadDataByte	4	static

@@ -1,0 +1,6 @@
+../Src/I2C_program.c:10:6:I2C_voidInit	1
+../Src/I2C_program.c:33:6:I2c_voidSendStartCondition	2
+../Src/I2C_program.c:43:6:I2C_voidSendSlaveAddress	2
+../Src/I2C_program.c:50:6:I2C_voidMasterWriteDataByte	2
+../Src/I2C_program.c:55:6:I2C_voidSendStopCondition	1
+../Src/I2C_program.c:62:4:I2C_u8MasterReadDataByte	2

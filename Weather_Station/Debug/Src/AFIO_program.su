@@ -1,0 +1,2 @@
+../Src/AFIO_program.c:25:6:AFIO_voidRemap	4	static
+../Src/AFIO_program.c:92:7:AFIO_voidsetEXTIAltFunc	16	static

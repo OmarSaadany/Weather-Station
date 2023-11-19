@@ -1,0 +1,7 @@
+../Src/USART_program.c:20:6:USART_voidInit	1
+../Src/USART_program.c:74:6:USART_enableTX	1
+../Src/USART_program.c:78:6:USART_enableRX	1
+../Src/USART_program.c:85:6:USART_voidSendByte	3
+../Src/USART_program.c:100:6:USART_voidSendString	2
+../Src/USART_program.c:111:4:USART_u8ReciveData	2
+../Src/USART_program.c:126:6:USART_StrReceiveString	2

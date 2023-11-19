@@ -1,0 +1,3 @@
+../Src/SHT.c:13:6:SHT_SensorInit	8	static
+../Src/SHT.c:25:5:SHT_RecieveTemp	16	static
+../Src/SHT.c:52:5:SHT_RecieveHumd	16	static
