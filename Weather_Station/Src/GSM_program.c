@@ -14,6 +14,8 @@
 // this string used with GSM_voidSendData function to convert float numbers into array by using ftoa function
 u8 ftoa_Result[20];
 
+extern volatile f32 SensorTempRead;
+extern volatile f32 SensorHumdRead;
 
 // these data are global in SOILSENSOR files and updated before calling GSM_voidSendData
 extern f32 soilHumidity	 	    ;
@@ -102,24 +104,40 @@ void GSM_voidSendData(void)
 	USART3_voidSendString("AT+HTTPPARA=\"URL\",\"https://script.google.com/macros/s/AKfycbyiUN1bmSNm345frzKFq8PqFyeCMFSN9RfPf0dQ0b-GIZpI2YYp2j5B7hdfIjlw0NXU/exec?");
 
 	// scaleID= is the first macro then send its value as string
-	USART3_voidSendString("scaleID=");
+	USART3_voidSendString("soilHumidity=");
 	ftoa(soilHumidity, ftoa_Result, 2);
 	USART3_voidSendString(ftoa_Result);
 
-	USART3_voidSendString("&type=");
+	USART3_voidSendString("&soilTemperature=");
 	ftoa(soilTemperature, ftoa_Result, 2);
 	USART3_voidSendString(ftoa_Result);
 
-	USART3_voidSendString("&weightLimit=");
+	USART3_voidSendString("&soilConductivity=");
 	intToStr(soilConductivity, ftoa_Result, 3) ;
 	USART3_voidSendString(ftoa_Result);
 
-	USART3_voidSendString("&weightTolerance=");
+	USART3_voidSendString("&soilPH=");
 	ftoa(soilPH, ftoa_Result, 2);
 	USART3_voidSendString(ftoa_Result);
 
-	USART3_voidSendString("&weight=");
+	USART3_voidSendString("&soilNitrogen=");
 	intToStr(soilnitrogen, ftoa_Result, 2) ;
+	USART3_voidSendString(ftoa_Result);
+
+	USART3_voidSendString("&soilPhosphorus=");
+	intToStr(soilphosphorus, ftoa_Result, 2) ;
+	USART3_voidSendString(ftoa_Result);
+
+	USART3_voidSendString("&soilPotassium=");
+	intToStr(soilpotassium, ftoa_Result, 2) ;
+	USART3_voidSendString(ftoa_Result);
+
+	USART3_voidSendString("&airTemperature=");
+	ftoa(SensorTempRead, ftoa_Result, 2) ;
+	USART3_voidSendString(ftoa_Result);
+
+	USART3_voidSendString("&airHumididty=");
+	ftoa(SensorHumdRead, ftoa_Result, 2) ;
 	USART3_voidSendString(ftoa_Result);
 
 	USART3_voidSendString("\"\r\n");
@@ -131,6 +149,44 @@ void GSM_voidSendData(void)
 }
 
 
+//void GSM_voidSendData(void)
+//{
+//	// enable HTTPSSL
+//	USART3_voidSendString("AT+HTTPSSL=1");
+//	USART3_voidSendString("\r\n");
+//	_delay_ms(500);
+//
+//	// Send google sheet script link
+//	USART3_voidSendString("AT+HTTPPARA=\"URL\",\"https://script.google.com/macros/s/AKfycbyiUN1bmSNm345frzKFq8PqFyeCMFSN9RfPf0dQ0b-GIZpI2YYp2j5B7hdfIjlw0NXU/exec?");
+//
+//	// scaleID= is the first macro then send its value as string
+//	USART3_voidSendString("scaleID=");
+//	ftoa(5.0, ftoa_Result, 2);
+//	USART3_voidSendString(ftoa_Result);
+//
+//	USART3_voidSendString("&type=");
+//	ftoa(5.0, ftoa_Result, 2);
+//	USART3_voidSendString(ftoa_Result);
+//
+//	USART3_voidSendString("&weightLimit=");
+//	intToStr(5.0, ftoa_Result, 3) ;
+//	USART3_voidSendString(ftoa_Result);
+//
+//	USART3_voidSendString("&weightTolerance=");
+//	ftoa(5.0, ftoa_Result, 2);
+//	USART3_voidSendString(ftoa_Result);
+//
+//	USART3_voidSendString("&weight=");
+//	intToStr(5.0, ftoa_Result, 2) ;
+//	USART3_voidSendString(ftoa_Result);
+//
+//	USART3_voidSendString("\"\r\n");
+//	_delay_ms(3000);
+//
+//	USART3_voidSendString("AT+HTTPACTION=0");
+//	USART3_voidSendString("\r\n");
+//	_delay_ms(3000);
+//}
 
 /* Function:-			void GSM_voidPhoneCall(u8* PhoneNumSTR);
  * I/O Parameters:-		u8*

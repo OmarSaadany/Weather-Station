@@ -35,8 +35,8 @@ u8	 		GSMTimeOut=0;	// time out used to detect if the GSM did not respond to pre
 volatile u8 DoorStatus[6]="Closed"; // initial Status of the door
 
 
-f32 SensorTempRead;
-f32 SensorHumdRead;
+volatile f32 SensorTempRead;
+volatile f32 SensorHumdRead;
 
 int main()
 {
@@ -62,6 +62,9 @@ int main()
 	DIO_voidSetPinDirection(PORTA, PIN0, GPIO_INPUT_PULL_UP_DOWN); 	//Set Pin0  in PORTA as INPUT to use it as EXTI
 	DIO_voidSetPinValue(PORTA, PIN0, GPIO_HIGH); 					//Set Pin0  in PORTA as Pull Up
 
+	DIO_voidSetPinDirection(PORTA,PIN6,GPIO_OUTPUT_2MHZ_PP);     //led status indicator for gsm
+	DIO_voidSetPinDirection(PORTA,PIN11,GPIO_OUTPUT_2MHZ_PP);     //led status indicator for soil sensor
+	DIO_voidSetPinDirection(PORTB,PIN4,GPIO_OUTPUT_2MHZ_PP);		//Set Pin4 in PORTB as Output to use it to control switching air sensor on / off
 
 	NVIC_voidInit();									//Interrupt Initialization
 	AFIO_voidsetEXTIAltFunc(PORTA, PIN0);				//Set Pin 0 in PORTA as EXTI
@@ -86,9 +89,11 @@ int main()
 
 	SHT_SensorInit();			//SHT20 Sensor Initialization
 
-
+	DIO_voidSetPinValue(PORTA,PIN11,HIGH);
+	DIO_voidSetPinValue(PORTB,PIN4,HIGH);
 	while(1)
 	{
+		//GSM_voidSendData();			// Upload data in google sheet
 
 		SOIL_voidSensorReadData();  // Update Soil sensor readings
 		_delay_ms(100);				// Busy wait delay
@@ -124,10 +129,12 @@ int main()
 		/* General Note: - if the uploading of the data is done correctly the Bytes 15:17 will contain "302" */
 		if (GSMSTATUS[15]!='3' || GSMSTATUS[16]!='0' || GSMSTATUS[17]!='2') // not uploaded
 		{
+			DIO_voidSetPinValue(PORTA,PIN6,LOW);
 			GSM_voidConnectToNetwork(); 	// Reconnect to the network and try again
 		}
 		else // if the uploading of the data is done correctly
 		{
+			DIO_voidSetPinValue(PORTA,PIN6,HIGH);
 			_delay_ms(5000); // busy wait to the next needed upload time
 		}
 		for (int i =0 ; i<23; i++) // set the whole array = zeros

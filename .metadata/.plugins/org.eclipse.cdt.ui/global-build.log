@@ -1,0 +1,14 @@
+14:45:34 **** Incremental Build of configuration Debug for project Weather_Station ****
+make -j4 all 
+arm-none-eabi-size   Weather_Station.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14324	    120	   2016	  16460	   404c	Weather_Station.elf
+Finished building: default.size.stdout
+ 
+14:47:11 **** Incremental Build of configuration Debug for project Weather_Station ****
+make -j4 all 
+arm-none-eabi-size   Weather_Station.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14324	    120	   2016	  16460	   404c	Weather_Station.elf
+Finished building: default.size.stdout
+ 

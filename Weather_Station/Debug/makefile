@@ -59,8 +59,8 @@ all: main-build
 main-build: Weather_Station.elf secondary-outputs
 
 # Tool invocations
-Weather_Station.elf Weather_Station.map: $(OBJS) $(USER_OBJS) H:\DK\ Group\DK_Workspace\Weather_Station\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Weather_Station.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"H:\DK Group\DK_Workspace\Weather_Station\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Weather_Station.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Weather_Station.elf Weather_Station.map: $(OBJS) $(USER_OBJS) C:\Users\khale\Documents\GitHub\Weather-Station\Weather_Station\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Weather_Station.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\khale\Documents\GitHub\Weather-Station\Weather_Station\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Weather_Station.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
